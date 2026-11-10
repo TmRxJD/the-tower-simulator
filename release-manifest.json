@@ -1,10 +1,10 @@
 {
   "schema": "tower-simulator-pages/v1",
-  "createdUtc": "2026-11-10T18:15:36.274Z",
+  "createdUtc": "2026-11-10T21:07:46.110Z",
   "privateSourceIncluded": false,
   "sourceMapsIncluded": false,
   "sourceDriftCount": 0,
-  "engineSource": "preserved-release",
+  "engineSource": "current-source",
   "packagedProducerCatalogFields": 785,
   "simulations": "actual Rust WebAssembly engine in one worker per slot",
   "modelAccess": "user-owned BYOK only; subscription authorization requires desktop",
@@ -17526,8 +17526,8 @@
     },
     {
       "path": "browser-producer.js",
-      "bytes": 8365571,
-      "sha256": "8e8d41d5bda60a41bcf88c4d194ccb190b1f2be523f3416d71cc44dc8b1a8f3f"
+      "bytes": 8365340,
+      "sha256": "1c3393007b12060cf976446d6c0f764f2823d0521f37cbbb636af23593b4c7d1"
     },
     {
       "path": "browser-runtime.js",
@@ -17722,12 +17722,12 @@
     {
       "path": "wasm/manifest.json",
       "bytes": 530,
-      "sha256": "e4b95694a21659a45a9331a9b8978df665cfb76edb87c724c03ed0d3880e5c91"
+      "sha256": "f2d16c2d3bf9e4b617263b90be9c10d30b2e3aaf7b0a15e8b28af34963cb8500"
     },
     {
       "path": "wasm/tower-simulator.wasm",
-      "bytes": 6525380,
-      "sha256": "173e979e078916e2495b13c9142dd8b5c7b760b86eded4ae077abd87182ed883"
+      "bytes": 6573913,
+      "sha256": "7639518c33007725f2705d74df23242bc54c7354e8cb96edefbe0bc37ffdbb78"
     },
     {
       "path": "within-run-analysis.js",
