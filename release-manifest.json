@@ -1,6 +1,6 @@
 {
   "schema": "tower-simulator-pages/v1",
-  "createdUtc": "2026-11-10T04:08:22.689Z",
+  "createdUtc": "2026-11-10T04:27:05.534Z",
   "privateSourceIncluded": false,
   "sourceMapsIncluded": false,
   "sourceDriftCount": 0,
@@ -17590,8 +17590,8 @@
     },
     {
       "path": "download.js",
-      "bytes": 1184,
-      "sha256": "5f825c3749d583dfe9e19791992c8257590caa99507b3588a9787e23fc094c6f"
+      "bytes": 1186,
+      "sha256": "d30def802d14d6095f72c145ec357b6356b7ebd48066a3c86d2529ae7327ca46"
     },
     {
       "path": "formatter.js",
@@ -17606,7 +17606,7 @@
     {
       "path": "index.html",
       "bytes": 22240,
-      "sha256": "b96182c8d78fcc5675d0d1e90ae021aa4267c7dfad8d45cf023baefe4d6951c8"
+      "sha256": "71d450a06d02856a3e901358b5d836e53a14672e0deadbd5eae14dba5be56f62"
     },
     {
       "path": "licenses/jose-LICENSE.txt",
@@ -17705,8 +17705,8 @@
     },
     {
       "path": "ui.js",
-      "bytes": 6706,
-      "sha256": "804394cf5dbb7876d8a35f37cdc046618813af2e6d830b9488a0494fab818a22"
+      "bytes": 6752,
+      "sha256": "fd69e14496987d5b03d69c73e181ab89bbb1e8c2f73a0c692fc96f258d42e0e5"
     },
     {
       "path": "wasm/engine.js",
