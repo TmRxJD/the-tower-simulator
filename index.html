@@ -39,7 +39,7 @@
 </span>
 </a>
 <div class="header-actions">
-<button id="header-import" type="button" class="button import-account" data-icon="import">Import Save</button>
+<button id="header-import" type="button" class="button import-account" data-icon="import" disabled aria-busy="true">Import Save</button>
 <div class="header-actions-secondary">
 <button id="open-ai" class="button" type="button" aria-controls="sim-ai-drawer" aria-expanded="false" data-icon="chat" title="Simulator AI">
 <span class="button-label">AI</span>
@@ -59,7 +59,7 @@
 <main id="main">
 <div id="global-error" class="error-banner" role="alert" hidden>
 </div>
-<input id="account-file" class="sr-only" type="file" accept=".json,application/json">
+<input id="account-file" class="sr-only" type="file" accept=".json,application/json" disabled>
 <select id="account-picker" hidden aria-label="Save">
 </select>
 <div id="account-summary" hidden>

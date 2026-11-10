@@ -1,9 +1,10 @@
 {
   "schema": "tower-simulator-pages/v1",
-  "createdUtc": "2026-11-10T05:33:30.878Z",
+  "createdUtc": "2026-11-10T17:10:14.299Z",
   "privateSourceIncluded": false,
   "sourceMapsIncluded": false,
   "sourceDriftCount": 0,
+  "engineSource": "preserved-release",
   "packagedProducerCatalogFields": 785,
   "simulations": "actual Rust WebAssembly engine in one worker per slot",
   "modelAccess": "user-owned BYOK only; subscription authorization requires desktop",
@@ -45,8 +46,8 @@
     },
     {
       "path": "app.js",
-      "bytes": 70663,
-      "sha256": "4ae8ccd25c5a19e33183b235f9fff66070685704d3cf574ea30a0313aa226fcc"
+      "bytes": 72423,
+      "sha256": "18f25bac3f3226c3f10b90dee7034dfbc42b50ab0cba878af3d0c29abb225fce"
     },
     {
       "path": "asset-catalog.json",
@@ -17525,18 +17526,18 @@
     },
     {
       "path": "browser-producer.js",
-      "bytes": 8361580,
-      "sha256": "dd734630a9c52cc0d0fc199c3149279f4ca3c77000f7446479e49cc2b92c9775"
+      "bytes": 8363217,
+      "sha256": "68c8b75137de4656c25beb463617571f66a9e85a40d1f121b9a202d3a61eb360"
     },
     {
       "path": "browser-runtime.js",
-      "bytes": 24220,
-      "sha256": "118e6dc9ab1e03ba8703bb8ebbc753796f471c1942bbdc950cfa456f0cdad80c"
+      "bytes": 24384,
+      "sha256": "bcdecd6cd06ab23f252cf6486fd4d96f9c4c9ae8545d5ce7d85a0517179f8cef"
     },
     {
       "path": "browser-simulator-worker.js",
-      "bytes": 886,
-      "sha256": "5fe6009e3c3faf76c17c3f907cba5259b1335e0b3e5f8e4613d0108facafa47c"
+      "bytes": 1033,
+      "sha256": "65e8354b57269c580d903b6eb0ab5d04db5ba91a1364e583723b51b253dbefb5"
     },
     {
       "path": "build-editor.js",
@@ -17545,8 +17546,8 @@
     },
     {
       "path": "choice-picker.js",
-      "bytes": 6457,
-      "sha256": "c13322c0d9589f4cfa02dfbe69633703c61246a07569f6aed587e86c0ff0e36d"
+      "bytes": 7046,
+      "sha256": "9607f2f67ad79a8095b3b9561dd4697ee46d6e439a9e7d32cd2a894dbccf805c"
     },
     {
       "path": "cloud-account.css",
@@ -17605,8 +17606,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 22250,
-      "sha256": "cf72620e055018faedf1c40ba3e5ca955dc590352f2b6e25efdbf93c4a099819"
+      "bytes": 22285,
+      "sha256": "061f805f5debf328796673bb045c3fa4d4b738095ddb59dd4d6c70d38f129310"
     },
     {
       "path": "licenses/jose-LICENSE.txt",
