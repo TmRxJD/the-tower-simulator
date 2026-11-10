@@ -1,6 +1,6 @@
 {
   "schema": "tower-simulator-pages/v1",
-  "createdUtc": "2026-11-10T21:07:46.110Z",
+  "createdUtc": "2026-11-10T21:35:48.000Z",
   "privateSourceIncluded": false,
   "sourceMapsIncluded": false,
   "sourceDriftCount": 0,
@@ -46,8 +46,8 @@
     },
     {
       "path": "app.js",
-      "bytes": 73056,
-      "sha256": "192c3a03605e04842b82bf0ed75398f244e627da9e6efbeb54d1420d0751275e"
+      "bytes": 73108,
+      "sha256": "4849cfc8dee892e01380a775daec1453ec6ef8929f1de86e0919afa648640c71"
     },
     {
       "path": "asset-catalog.json",
@@ -17606,8 +17606,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 22285,
-      "sha256": "061f805f5debf328796673bb045c3fa4d4b738095ddb59dd4d6c70d38f129310"
+      "bytes": 22472,
+      "sha256": "7031d2e0a40befc9d02afb639c131cc67ce8a48a6d261d6f02046bca09351f01"
     },
     {
       "path": "licenses/jose-LICENSE.txt",
@@ -17666,8 +17666,8 @@
     },
     {
       "path": "setup-workspace.js",
-      "bytes": 7142,
-      "sha256": "43a276da88c62670d64a91b1c3b435a4ae9364f261580b9dfc05fc50b75f44e7"
+      "bytes": 7085,
+      "sha256": "bc43f412fcdd91f5400946a656488a00c58d31b3f839af6f0ca3796ccdcf9ad4"
     },
     {
       "path": "slot-memory.js",
