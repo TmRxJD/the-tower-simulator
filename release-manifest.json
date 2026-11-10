@@ -1,6 +1,6 @@
 {
   "schema": "tower-simulator-pages/v1",
-  "createdUtc": "2026-11-10T04:27:05.534Z",
+  "createdUtc": "2026-11-10T05:33:30.878Z",
   "privateSourceIncluded": false,
   "sourceMapsIncluded": false,
   "sourceDriftCount": 0,
@@ -40,8 +40,8 @@
     },
     {
       "path": "analysis.js",
-      "bytes": 13283,
-      "sha256": "f6f7e433fa812479448aaef3543bdd0d914b2741de83edc6582d2bb6a43ef022"
+      "bytes": 14765,
+      "sha256": "a7b48b3d486bf0648a6d7e933072d30fcfd8412e30de7ad677bc06f3f1229373"
     },
     {
       "path": "app.js",
@@ -17500,8 +17500,8 @@
     },
     {
       "path": "balanced-layout.js",
-      "bytes": 1330,
-      "sha256": "84ff07233fe57ddb6da847e3a41f7bab7225eb8b2189c435e4d3b5c543d6b9fd"
+      "bytes": 1340,
+      "sha256": "88b43e97163a381c2742d8cad5761e30f9165bc7f3605b97fddbe7621d90b9ae"
     },
     {
       "path": "battle-log.js",
@@ -17525,13 +17525,13 @@
     },
     {
       "path": "browser-producer.js",
-      "bytes": 8361300,
-      "sha256": "961330163135e5a9b46f47b4f3b729182c9866252b1ed8dd796da59b2811f9dc"
+      "bytes": 8361580,
+      "sha256": "dd734630a9c52cc0d0fc199c3149279f4ca3c77000f7446479e49cc2b92c9775"
     },
     {
       "path": "browser-runtime.js",
-      "bytes": 24090,
-      "sha256": "a76f342ac930f529b7342cd717d319fc546bf8569260d18577a0c50ce238de0c"
+      "bytes": 24220,
+      "sha256": "118e6dc9ab1e03ba8703bb8ebbc753796f471c1942bbdc950cfa456f0cdad80c"
     },
     {
       "path": "browser-simulator-worker.js",
@@ -17605,8 +17605,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 22240,
-      "sha256": "71d450a06d02856a3e901358b5d836e53a14672e0deadbd5eae14dba5be56f62"
+      "bytes": 22250,
+      "sha256": "cf72620e055018faedf1c40ba3e5ca955dc590352f2b6e25efdbf93c4a099819"
     },
     {
       "path": "licenses/jose-LICENSE.txt",
@@ -17670,8 +17670,8 @@
     },
     {
       "path": "style.css",
-      "bytes": 59780,
-      "sha256": "a21ceed447a3642cb0d807520a78bcad41eda93adb3136f84475511e300ea24d"
+      "bytes": 59888,
+      "sha256": "f97c0065907ff104a3de03376654dd1c321575947f77cd58d9e29e7eccde45db"
     },
     {
       "path": "table-pagination.js",
@@ -17722,6 +17722,11 @@
       "path": "wasm/tower-simulator.wasm",
       "bytes": 6525380,
       "sha256": "173e979e078916e2495b13c9142dd8b5c7b760b86eded4ae077abd87182ed883"
+    },
+    {
+      "path": "within-run-analysis.js",
+      "bytes": 9460,
+      "sha256": "78de56c0f21f84fe0af027b29aaa91c4a228d0f60673cf6c74c806aa2e3f7295"
     }
   ]
 }
