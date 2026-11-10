@@ -1,6 +1,6 @@
 {
   "schema": "tower-simulator-pages/v1",
-  "createdUtc": "2026-11-10T03:06:46.921Z",
+  "createdUtc": "2026-11-10T04:08:22.689Z",
   "privateSourceIncluded": false,
   "sourceMapsIncluded": false,
   "sourceDriftCount": 0,
@@ -45,8 +45,8 @@
     },
     {
       "path": "app.js",
-      "bytes": 70667,
-      "sha256": "0662b41acd0b8f6fb017aa183f5d0bfb0ba375bf18373533e0f9585d7fbfcdd3"
+      "bytes": 70663,
+      "sha256": "4ae8ccd25c5a19e33183b235f9fff66070685704d3cf574ea30a0313aa226fcc"
     },
     {
       "path": "asset-catalog.json",
@@ -17525,13 +17525,13 @@
     },
     {
       "path": "browser-producer.js",
-      "bytes": 8359837,
-      "sha256": "390fc291a562394d46f60d1af45d613fa520097ad8214f78b4e32871346c0670"
+      "bytes": 8361300,
+      "sha256": "961330163135e5a9b46f47b4f3b729182c9866252b1ed8dd796da59b2811f9dc"
     },
     {
       "path": "browser-runtime.js",
-      "bytes": 23503,
-      "sha256": "fe47ecd2b8205ad3bfd602ec8bcd48b65fcb7a4ca3d3c9e2a4579afd5febe207"
+      "bytes": 24090,
+      "sha256": "a76f342ac930f529b7342cd717d319fc546bf8569260d18577a0c50ce238de0c"
     },
     {
       "path": "browser-simulator-worker.js",
@@ -17705,8 +17705,8 @@
     },
     {
       "path": "ui.js",
-      "bytes": 6149,
-      "sha256": "8b4fbfff75bb53b48873f0ada768db39349a1968fb458414c491211f3a2f7fc2"
+      "bytes": 6706,
+      "sha256": "804394cf5dbb7876d8a35f37cdc046618813af2e6d830b9488a0494fab818a22"
     },
     {
       "path": "wasm/engine.js",
@@ -17716,12 +17716,12 @@
     {
       "path": "wasm/manifest.json",
       "bytes": 530,
-      "sha256": "594a8ac21dd72b9f69b9c1d2138799020340442cea1e32a2dca5e4f02d1e6443"
+      "sha256": "e4b95694a21659a45a9331a9b8978df665cfb76edb87c724c03ed0d3880e5c91"
     },
     {
       "path": "wasm/tower-simulator.wasm",
-      "bytes": 6524929,
-      "sha256": "7b12738d8e81de57ad461b62b12310c5b876f480aecf3f260fcacee4705f7b15"
+      "bytes": 6525380,
+      "sha256": "173e979e078916e2495b13c9142dd8b5c7b760b86eded4ae077abd87182ed883"
     }
   ]
 }
