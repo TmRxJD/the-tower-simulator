@@ -1,0 +1,1 @@
+function r(n,t=2){if(typeof n!="number"||!Number.isFinite(n))return"\u2014";const i=Number(n.toPrecision(7));return new Intl.NumberFormat("en-US",{notation:"standard",useGrouping:!1,minimumFractionDigits:t,maximumFractionDigits:t}).format(i)}export{r as bonusMultiplier};

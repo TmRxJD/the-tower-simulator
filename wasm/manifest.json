@@ -1,0 +1,20 @@
+{
+  "schema": "tower-browser-wasm/v1",
+  "abi": 1,
+  "bytes": 6524929,
+  "sha256": "7b12738d8e81de57ad461b62b12310c5b876f480aecf3f260fcacee4705f7b15",
+  "sourceSha256": "fd77b431d11427b7a27e655176b6b681b464e377a51d54e0b30e9a364d41c5b1",
+  "maxWork": 100000000000,
+  "maxSteps": 100000000,
+  "stackBytes": 33554432,
+  "maxMemoryBytes": 2147483648,
+  "commands": {
+    "reference": 0,
+    "experimentalEvents": 1,
+    "detailed": 2,
+    "sampled": 2,
+    "campaignTable": 10,
+    "compactCoverage": 11,
+    "eventCoverage": 12
+  }
+}

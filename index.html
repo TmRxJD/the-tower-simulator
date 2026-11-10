@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; connect-src 'self' https:; style-src 'self' 'unsafe-inline'; style-src-attr 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https:; frame-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tower Simulator</title>
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./domain-layout.css">
+<link rel="stylesheet" href="./ai-chat.css">
+<link rel="stylesheet" href="./ai-markdown.css">
+<link rel="stylesheet" href="./tracker-analysis.css">
+<link rel="stylesheet" href="./cloud-account.css">
+</head>
+<body>
+<header class="app-header">
+<div class="header-primary">
+<a class="brand" href="#">
+<img src="./assets/game/icons/emblem-tower-md.webp" width="32" height="32" alt="">
+<span>Tower Simulator</span>
+</a>
+<nav class="tabs" role="tablist" aria-label="Simulator">
+<button id="tab-builds" role="tab" aria-controls="builds" aria-selected="false" tabindex="-1">Builds</button>
+<button id="tab-setup" role="tab" aria-controls="setup" aria-selected="false" tabindex="-1">Setup</button>
+<button id="tab-progress" role="tab" aria-controls="progress" aria-selected="true">Progress <span id="progress-count" class="count" title="Running Runs">0</span>
+</button>
+<button id="tab-analysis" role="tab" aria-controls="analysis" aria-selected="false" tabindex="-1">Analysis</button>
+<button id="tab-results" role="tab" aria-controls="results" aria-selected="false" tabindex="-1">Results <span id="result-count" class="count">0</span>
+</button>
+
+</nav>
+</div>
+<a class="creator-code" href="https://store.techtreegames.com/thetower/" target="_blank" rel="noopener noreferrer" title="Use code in Tower Webstore to support this project">
+<img src="./creator-logo.webp" width="22" height="22" alt="">
+<span>
+<small>Creator Code:</small>
+<strong>JDEVO</strong>
+</span>
+</a>
+<div class="header-actions">
+<button id="header-import" type="button" class="button import-account" data-icon="import">Import Save</button>
+<div class="header-actions-secondary">
+<button id="open-download" class="icon-button" type="button" title="Download" aria-label="Download" hidden></button>
+<button id="open-ai" class="button" type="button" aria-controls="sim-ai-drawer" aria-expanded="false" data-icon="chat" title="Simulator AI">
+<span class="button-label">AI</span>
+</button>
+<button id="open-account" class="button" type="button" data-icon="account" title="Account">
+<span class="button-label">Account</span>
+</button>
+<button id="open-info" class="icon-button" type="button" title="Help" aria-label="Help" data-icon="info">
+</button>
+</div>
+<span id="batch-count" class="sr-only">
+</span>
+<span id="connection-status" class="sr-only">Connecting</span>
+</div>
+</header>
+<main id="main">
+<div id="global-error" class="error-banner" role="alert" hidden>
+</div>
+<input id="account-file" class="sr-only" type="file" accept=".json,application/json">
+<select id="account-picker" hidden aria-label="Save">
+</select>
+<div id="account-summary" hidden>
+</div>
+<p id="import-status" class="form-status import-status" role="status">
+</p>
+<section id="builds" role="tabpanel" aria-labelledby="tab-builds" hidden>
+<div id="setup-empty-view" class="setup-empty">
+<img src="./assets/game/icons/emblem-tower-md.webp" width="64" height="64" alt="">
+<h1>Your Tower</h1>
+<p>Load Your Save To Create Builds.</p>
+<div class="actions">
+<button id="empty-create" type="button" class="button">Enter Stats</button>
+</div>
+</div>
+<div id="setup-build-view" class="builds-shell" hidden>
+<aside class="build-library">
+<div class="build-library-title">
+<h1>Builds</h1>
+<button id="new-preset" type="button" class="icon-button" data-icon="plus" title="New Build" aria-label="New Build">
+</button>
+</div>
+<label class="sr-only" for="build-search">Find Build</label>
+<input id="build-search" type="search" placeholder="Find Build">
+<nav id="build-tabs" aria-label="Builds">
+</nav>
+<div class="save-status">
+<span id="account-banner-origin">
+</span>
+<strong id="account-banner-name">Current Save</strong>
+<button id="edit-account" type="button" class="text-button">Base Stats</button>
+</div>
+</aside>
+<div class="build-workbench">
+<form id="preset-form">
+<select id="preset-account" name="accountId" hidden required aria-label="Build Save">
+</select>
+<select id="preset-picker" hidden aria-label="Saved Build">
+</select>
+<header class="build-heading">
+<div class="build-title">
+<label class="sr-only" for="preset-name">Build Name</label>
+<input id="preset-name" name="name" value="Farm" required maxlength="80">
+<span id="draft-state" class="badge">Unsaved</span>
+<span id="draft-indicator" hidden>
+</span>
+</div>
+<div class="actions">
+<label class="preset-source field">
+<span class="sr-only">From Save</span>
+<select id="saved-preset-picker" aria-label="From Save">
+<option value="">From Save…</option>
+</select>
+</label>
+<button id="duplicate-preset" type="button" class="icon-button" data-icon="copy" title="Duplicate Build" aria-label="Duplicate Build">
+</button>
+<button id="save-preset" type="submit" class="button primary" data-icon="save">Save</button>
+<button id="configure-run" type="button" class="button" data-icon="play">Use In Setup</button>
+</div>
+</header>
+<details class="build-description">
+<summary>Description</summary>
+<label class="sr-only" for="preset-description">Description</label>
+<textarea id="preset-description" name="description" rows="2" maxlength="2000" placeholder="Describe This Build">
+</textarea>
+</details>
+<p id="preset-status" class="form-status" role="status">
+</p>
+<div class="build-tools">
+<button id="run-changes" type="button" class="button" data-icon="wave">Mid-Run Changes</button>
+<button id="run-controls" type="button" class="button" data-icon="settings">Controls</button>
+<span id="rules-summary" class="muted small" hidden>
+</span>
+</div>
+<section class="editor-workspace">
+<div id="build-editor">
+</div>
+</section>
+</form>
+</div>
+</div>
+<div id="setup-account-editor-view" hidden>
+<div class="account-editor-heading">
+<h1>Base Stats</h1>
+<input id="account-name" type="hidden" value="Current Save">
+<span id="account-edit-state" class="badge">Unsaved</span>
+<div class="actions">
+<button id="cancel-account-edit" type="button" class="button">Cancel</button>
+<button id="save-account" type="button" class="button primary" data-icon="save">Use Stats</button>
+</div>
+</div>
+<p id="account-edit-status" class="form-status" role="status">
+</p>
+<div class="editor-workspace" id="account-editor-root">
+</div>
+</div>
+</section>
+<section id="setup" role="tabpanel" aria-labelledby="tab-setup" hidden>
+<div class="workspace-toolbar">
+<div>
+<h1>Setup</h1>
+<span id="setup-save-label" class="sr-only">Current Save</span>
+</div>
+<div class="actions">
+<button id="run-current" type="button" class="button primary" data-icon="play">Run All</button>
+</div>
+</div>
+<section id="run-settings-panel" class="run-settings-panel" hidden inert>
+<div class="section-heading">
+<h2>Run Settings</h2>
+<span id="draft-scenario-summary" class="scenario-summary">
+</span>
+</div>
+<div class="scenario-primary">
+<select id="run-type" hidden>
+<option value="farm">Farm</option>
+<option value="tournament">Tournament</option>
+<option value="dissonance">Dissonance</option>
+</select>
+<div class="run-types" role="group" aria-label="Run Type">
+<button type="button" data-run-type="farm">Farm</button>
+<button type="button" data-run-type="tournament">Tournament</button>
+<button type="button" data-run-type="dissonance">Dissonance</button>
+</div>
+<label class="field">Tier<select id="preset-tier" name="tier" form="preset-form" required>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+<option>13</option>
+<option>14</option>
+<option>15</option>
+<option>16</option>
+<option>17</option>
+<option>18</option>
+<option>19</option>
+<option>20</option>
+<option selected>21</option>
+<option>22</option>
+<option>23</option>
+<option>24</option>
+</select>
+</label>
+<label class="field">End<select id="run-end-mode">
+<option value="until">Until Death</option>
+<option value="target" selected>Target Wave</option>
+</select>
+</label>
+<label id="target-wave-field" class="field">Target Wave<input id="preset-wave" form="preset-form" name="targetWave" type="number" value="11000" min="0" max="20000" required>
+</label>
+<label class="field" title="Ranks Finished Runs By This Metric">Goal<select id="run-goal">
+<option value="waves">Waves</option>
+<optgroup label="Coins">
+<option value="coins.total">Coins / Total</option>
+<option value="coins.hour">Coins / Hour</option>
+<option value="coins.minute">Coins / Minute</option>
+</optgroup>
+<optgroup label="Cells">
+<option value="cells.total">Cells / Total</option>
+<option value="cells.hour">Cells / Hour</option>
+<option value="cells.minute">Cells / Minute</option>
+</optgroup>
+<optgroup label="Shards">
+<option value="shards.total">Shards / Total</option>
+<option value="shards.hour">Shards / Hour</option>
+<option value="shards.minute">Shards / Minute</option>
+</optgroup>
+<optgroup label="Dice">
+<option value="dice.total">Dice / Total</option>
+<option value="dice.hour">Dice / Hour</option>
+<option value="dice.minute">Dice / Minute</option>
+</optgroup>
+</select>
+</label>
+</div>
+<div id="run-context" class="scenario-context">
+<label id="tournament-event-field" class="field" hidden>Tournament<select id="run-tournament-event">
+<option value="">Manual</option>
+</select>
+</label>
+<label id="tournament-league-field" class="field" hidden>League<select id="run-league">
+</select>
+</label>
+<label id="dissonance-category-field" class="field" hidden>Category<select id="run-category">
+<option value="attack">Attack</option>
+<option value="defense">Defense</option>
+<option value="utility">Utility</option>
+<option value="ultimate_weapon">Ultimate Weapons</option>
+</select>
+</label>
+<div id="tournament-tier-field" hidden>Tier<output id="run-tournament-tier">
+</output>
+</div>
+<button id="tournament-conditions" type="button" class="button" hidden>Conditions</button>
+</div>
+<div class="simulation-options">
+<label class="field">Mode<select id="preset-mode" name="mode" form="preset-form" title="Sampled Groups Repeated Combat Events For Fast Predictions. Detailed Processes More Events. Reference Validates Frame By Frame.">
+<option value="fast">Sampled</option>
+<option value="statistical">Detailed</option>
+<option value="reference">Reference</option>
+</select>
+<span id="mode-hint" class="sr-only">
+</span>
+</label>
+<label class="field" title="Assumed Game Render Rate. Display Refresh And The In-Game Setting Do Not Establish Actual FPS.">FPS<select id="preset-fps" name="fps" form="preset-form">
+<option>30</option>
+<option>60</option>
+<option>90</option>
+<option selected>120</option>
+</select>
+</label>
+<label class="field" title="Simulator Randomness Only. Fixed Uses The Same RNG For Assigned Builds; These Are Not Game Seeds.">RNG<select id="run-seed-mode">
+<option value="auto">Auto</option>
+<option value="fixed">Fixed</option>
+</select>
+</label>
+<label id="fixed-seed-field" class="field" hidden>Sim Seed<input id="preset-seed" form="preset-form" name="seed" type="number" min="1" max="2147483647" value="1" disabled>
+</label>
+<label class="field" title="Records Damage, Life-Saving Activations And The Conditions Leading To Death.">Battle Log<select id="battle-log-mode">
+<option value="key_events">Key Events</option>
+</select>
+</label>
+<button id="mode-info" type="button" class="icon-button" title="Simulation Options" aria-label="Simulation Options" data-icon="info">
+</button>
+</div>
+<select id="run-rank" hidden>
+<option value="total">Total</option>
+<option value="hour">Hour</option>
+<option value="minute">Minute</option>
+</select>
+<p id="run-status" class="form-status" role="status">
+</p>
+<p id="run-readiness" class="form-status" hidden>
+</p>
+<p id="setup-disabled" class="form-status" hidden>Run Controls Unavailable</p>
+</section>
+<section class="run-slots-section">
+<div class="section-heading">
+<h2>Runs</h2>
+<div class="capacity-status">
+<span id="cpu-available">
+</span>
+<span id="setup-commit-memory" title="Available System Commit Memory">
+</span>
+<span id="setup-memory-capacity"></span>
+</div>
+</div>
+<div id="slots">
+<div id="assigned-slots" class="run-card-grid-host">
+</div>
+<h2 id="available-slots-heading" class="available-slots-heading">Available Slots</h2>
+<div id="available-slots" class="available-slot-grid">
+</div>
+</div>
+<p id="slots-empty" class="empty" hidden>Create A Build First.</p>
+</section>
+<span id="run-draft-name" hidden>
+</span>
+<span id="draft-objective-summary" hidden>
+</span>
+</section>
+<section id="progress" role="tabpanel" aria-labelledby="tab-progress">
+<div class="workspace-toolbar">
+<div>
+<h1>Progress</h1>
+<span id="run-count" class="muted small">
+</span>
+</div>
+<div class="actions">
+<button id="compare-progress" type="button" class="button" data-icon="compare">Compare</button>
+<button id="columns-progress" type="button" class="button" data-icon="columns">Columns</button>
+</div>
+</div>
+<section id="queued-batches" class="queued-batches" aria-label="Queued Runs" hidden>
+</section>
+<section class="panel table-panel">
+<div class="table-wrap comparison-scroll" role="region" aria-label="Progress Table" tabindex="0">
+<table id="progress-table">
+<caption class="sr-only">Live Runs</caption>
+<thead id="progress-head">
+</thead>
+<tbody id="progress-rows">
+</tbody>
+</table>
+</div>
+<div id="runs-empty" class="empty" hidden>
+<p id="runs-empty-message">No Active Runs. Assign A Build In Setup.</p>
+<button id="empty-progress-results" type="button" class="text-button">Results</button>
+</div>
+</section>
+<div id="progress-detail-host">
+</div>
+</section>
+<section id="results" role="tabpanel" aria-labelledby="tab-results" hidden>
+<div class="workspace-toolbar">
+<div>
+<h1>Results</h1>
+<span id="completed-count" class="muted small">
+</span>
+</div>
+<div class="actions">
+<label class="rank-picker">Rank By<select id="results-rank" aria-label="Rank Results By">
+</select>
+</label>
+<button id="trash-view" type="button" class="button" data-icon="trash">Trash</button>
+<button id="compare-results" type="button" class="button" data-icon="compare">Compare</button>
+<button id="columns-results" type="button" class="button" data-icon="columns">Columns</button>
+</div>
+</div>
+<section class="panel table-panel">
+<div class="table-wrap comparison-scroll" role="region" aria-label="Results Table" tabindex="0">
+<table id="results-table">
+<caption class="sr-only">Finished Runs</caption>
+<thead id="results-head">
+</thead>
+<tbody id="results-rows">
+</tbody>
+</table>
+</div>
+<p id="results-empty" class="empty">No Results Yet.</p>
+</section>
+<div id="results-detail-host">
+</div>
+</section>
+<section id="analysis" role="tabpanel" aria-labelledby="tab-analysis" hidden>
+<div class="workspace-toolbar">
+<h1>Analysis</h1>
+<div class="actions">
+<label class="field">Run<select id="analysis-run" aria-label="Analysis Run">
+</select>
+</label>
+<button id="analysis-compare" type="button" class="button" data-icon="compare">Compare</button>
+</div>
+</div>
+<div class="analysis-controls">
+<div class="run-types" role="group" aria-label="Chart Category">
+<button type="button" data-analysis-category="resources" aria-pressed="true">Resources</button>
+<button type="button" data-analysis-category="survival" aria-pressed="false">Survival</button>
+<button type="button" data-analysis-category="combat" aria-pressed="false">Combat</button>
+</div>
+<label class="field">View<select id="analysis-view">
+<option value="rate">Per Minute</option>
+<option value="total">Total</option>
+<option value="interval">Per Wave</option>
+</select>
+</label>
+<span id="analysis-status" role="status" class="muted small">
+</span>
+<button id="analysis-retry" type="button" class="button" data-icon="restore" hidden>Retry</button>
+</div>
+<div id="analysis-legend" class="analysis-legend">
+</div>
+<div id="analysis-charts" class="analysis-grid">
+</div>
+<p id="analysis-empty" class="empty" hidden>Select A Run With Recorded Checkpoints.</p>
+</section>
+<div id="run-details" hidden>
+<div class="selected-heading">
+<h2 id="selected-name">Run</h2>
+<span id="selected-status" class="badge">
+</span>
+<div class="actions">
+<button id="selected-build" type="button" class="button" data-icon="build">Build</button>
+<button id="selected-notes" type="button" class="button" data-icon="report">Notes</button>
+<button id="open-perks" type="button" class="button">Perks</button>
+<button id="open-coin-bonuses" type="button" hidden class="button">Coin Bonuses</button>
+<button id="open-wave-info" type="button" class="button">Wave</button>
+<button id="open-battle-log" type="button" class="button">Battle Log</button>
+<button id="open-battle-report" type="button" class="button">Stats</button>
+</div>
+<div id="run-error" class="error-banner" role="alert" hidden>
+</div>
+</div>
+<p id="selected-description" class="selected-description" hidden>
+</p>
+<p id="selected-scenario-summary" class="scenario-summary muted small">
+</p>
+<div class="game-summary">
+<section class="summary-block">
+<h3>Tower</h3>
+<dl>
+<div>
+<dt>Damage</dt>
+<dd id="tower-damage">&mdash;</dd>
+</div>
+<div>
+<dt>Health</dt>
+<dd id="tower-health">&mdash;</dd>
+</div>
+<div>
+<dt>Wall</dt>
+<dd id="wall-health">&mdash;</dd>
+</div>
+<div>
+<dt>Regen</dt>
+<dd id="tower-regen">&mdash;</dd>
+</div>
+<div>
+<dt>Reduction</dt>
+<dd>
+<button id="damage-reduction" type="button" disabled class="stat-link" title="Damage Reduction Breakdown">
+<span id="damage-reduction-total">&mdash;</span>
+</button>
+</dd>
+</div>
+<div>
+<dt>Kills</dt>
+<dd id="enemy-total">&mdash;</dd>
+</div>
+</dl>
+</section>
+<section class="summary-block">
+<h3>Wave</h3>
+<dl>
+<div>
+<dt>Wave</dt>
+<dd>
+<span id="selected-wave">&mdash;</span>
+<small id="selected-target">
+</small>
+</dd>
+</div>
+<div>
+<dt>Tier</dt>
+<dd id="selected-tier">&mdash;</dd>
+</div>
+<div>
+<dt>Health</dt>
+<dd id="wave-health">&mdash;</dd>
+</div>
+<div>
+<dt>Attack</dt>
+<dd id="wave-attack">&mdash;</dd>
+</div>
+<div>
+<dt>Play</dt>
+<dd id="play-duration">&mdash;</dd>
+</div>
+<div>
+<dt>Game Speed</dt>
+<dd id="wave-game-speed">&mdash;</dd>
+</div>
+</dl>
+<progress id="wave-progress" max="100" value="0" aria-label="Wave Progress">
+</progress>
+</section>
+<section class="summary-block resource-summary">
+<h3>Resources</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Resource</th>
+<th scope="col">Total</th>
+<th scope="col">Hour</th>
+<th scope="col" id="selected-rate-label">Min</th>
+</tr>
+</thead>
+<tbody id="selected-resources">
+</tbody>
+</table>
+</section>
+</div>
+<section class="panel recent-history">
+<div class="panel-title">
+<h3>History</h3>
+<div class="history-control">
+<span id="history-range" class="muted small">
+</span>
+<label for="history-window">Waves</label>
+<select id="history-window">
+<option selected>25</option>
+<option>50</option>
+<option>100</option>
+<option>250</option>
+<option>500</option>
+<option>1000</option>
+</select>
+</div>
+</div>
+<div class="table-wrap" role="region" aria-label="Recent Wave History" tabindex="0">
+<table id="history-table">
+<thead>
+<tr>
+<th>Wave</th>
+<th title="Modeled Play Duration">Play</th>
+<th title="Real Simulation Duration">Time</th>
+<th>Coins</th>
+<th>Cells</th>
+<th>Shards</th>
+<th>Dice</th>
+<th title="Discrete Tower Hits That Removed HP. Excludes Wall Hits, Misses, Saves And Continuous Drains. Unavailable When Aggregate Hits Cannot Be Separated.">Hits Taken</th>
+<th title="Damage Taken Uses The Game Battle Report Counter, Before Life-Saving Reductions.">Damage Taken</th>
+<th>Damage Dealt</th>
+<th title="Total Native Enemy Kills, Including Scatter Children.">Enemies Killed</th>
+</tr>
+</thead>
+<tbody id="history-rows">
+</tbody>
+</table>
+</div>
+<p id="history-empty" class="empty" hidden>No Checkpoints In This Window.</p>
+</section>
+<div class="analysis-shortcut">
+<button id="open-analysis" class="button" type="button" data-icon="chart">Analysis</button>
+</div>
+<details class="panel sim-disclosure">
+<summary>Sim <span id="simulation-duration">
+</span>
+</summary>
+<dl class="sim-stats">
+<div>
+<dt>Elapsed</dt>
+<dd id="cpu-duration">&mdash;</dd>
+</div>
+<div>
+<dt>Peak</dt>
+<dd id="peak-memory">&mdash;</dd>
+</div>
+<div>
+<dt>Available</dt>
+<dd id="available-memory">&mdash;</dd>
+</div>
+<div>
+<dt>Reserve</dt>
+<dd id="commit-reserve">&mdash;</dd>
+</div>
+<div>
+<dt>Checkpoint</dt>
+<dd id="last-checkpoint">&mdash;</dd>
+</div>
+</dl>
+</details>
+</div>
+<dialog id="info-dialog" class="app-dialog">
+<header>
+<h2>Help</h2>
+<button type="button" class="icon-button" data-close-dialog data-icon="close" aria-label="Close" title="Close">
+</button>
+</header>
+<div class="dialog-content">
+<p>Import Save replaces the baseline for editable builds. Builds stores loadouts and Mid-Run Changes. Setup assigns builds to run slots. Started runs keep their own frozen build.</p>
+<p>Play is modeled elapsed time. Time is real elapsed simulation time. Hour is a run average; Min is the current or final rolling rate. Module Shards assume all module drops are shattered. Dice includes Fetch.</p>
+<p>Sampled groups events for speed. Detailed processes more events. Reference uses slow frame validation. Sim Seed repeats this simulator’s RNG; it is not a game seed.</p>
+<p>Predictions are approximate. Calibration includes selected T21 and T22 farming reports. Tournament comparison is in progress.</p>
+<p id="model-note">
+</p>
+<p id="run-inputs">
+</p>
+<details id="economy-breakdown">
+<summary>Coins</summary>
+<div id="coin-sources">
+</div>
+</details>
+<details>
+<summary>Repeatability <span id="repeat-state">
+</span>
+</summary>
+<p id="repeat-detail">
+</p>
+</details>
+<details id="account-detail">
+<summary>Save</summary>
+<div id="account-derived">
+</div>
+</details>
+<p id="import-help">Import Your Tool Export Or Enter Base Stats.</p>
+</div>
+</dialog>
+</main>
+<script type="module" src="./download.js"></script>
+<script type="module" src="./app.js">
+</script>
+</body>
+</html>

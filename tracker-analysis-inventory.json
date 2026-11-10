@@ -1,0 +1,1019 @@
+{
+  "sources": [
+    {
+      "path": "src/components/user-runs/UserRunsAnalysisTab.vue",
+      "sha256": "69c06e259b7f27c161be1a90b79bce56900bb174974a2161fffee0e9b42cd817"
+    },
+    {
+      "path": "src/components/user-runs/hardcoded-category-chart-cards.ts",
+      "sha256": "f8931f631d9215796745fd6878e4e8f86356661582f1da1f1897f7ed257b09be"
+    },
+    {
+      "path": "src/services/user-runs/runAnalytics.engine.ts",
+      "sha256": "8ed42f2c87a9f4430966c0ce4c7b566eedbc8396257f75893655560217b4b591"
+    },
+    {
+      "path": "src/services/user-runs/runAnalytics.chartAdapter.ts",
+      "sha256": "714a49a165f71a57bc9583ea189f6c78ae88b1f076866fbefce85c0562c9a876"
+    },
+    {
+      "path": "src/services/user-runs/chart-computation/analysis-panel-charts.compute.ts",
+      "sha256": "9aabc68e7c37228e098d318352f3e9f1fb8fc9d0fb5136b0e4fc6839eef7a80d"
+    },
+    {
+      "path": "src/services/user-runs/chart-computation/read-chart-number.ts",
+      "sha256": "a936a2d59bafddc479488bdd320e6b2208d118b53d189bd8de812bf681163d3d"
+    },
+    {
+      "path": "src/lib/charts/chart-zoom-config.ts",
+      "sha256": "5c17149080d8eee158dc0f28fbad8f581c6cf9e306d88fa7ffee89b060f64c19"
+    },
+    {
+      "path": "packages/sdk/src/save/battle/report-fields.ts",
+      "sha256": "b81ee1b28f9f16ba4f94d832b7683070fc23366a00260378361618ea201a59ae"
+    }
+  ],
+  "schema": "tracker-analysis-source-port/v1",
+  "source": "Tracker UserRunsAnalysisTab.vue",
+  "sourceSha256": "69c06e259b7f27c161be1a90b79bce56900bb174974a2161fffee0e9b42cd817",
+  "declarations": [
+    "METRIC_LABEL_OVERRIDES",
+    "resolveAnalysisLabel",
+    "withAvgPrefix",
+    "analysisDiceLabel",
+    "coverageGtLabel",
+    "coverageBhLabel",
+    "coverageSlLabel",
+    "coverageDwLabel",
+    "coverageOrbsLabel",
+    "coverageGbLabel",
+    "coverageAmpLabel",
+    "coverageSummonedLabel",
+    "mainChartTitle",
+    "mainChartInfoLines",
+    "mainChartRollingWindow",
+    "mainGrowthSeriesSpecs",
+    "settingsStore",
+    "runs",
+    "schema",
+    "panelCategories",
+    "formatMetricLabel",
+    "isPercentLabel",
+    "formatMetricValue",
+    "getMetricLabel",
+    "resolveMetricKey",
+    "getAvailableNumericMetricKeys",
+    "getAvailableCategoryMetricKeys",
+    "parseRunTimestamp",
+    "getRunCoinsPerHourValue",
+    "averageNumbers",
+    "applyRollingAverage",
+    "toIndexedGrowthSeries",
+    "hasNumericGrowthData",
+    "toIndexedGrowthSeriesWithZeroFallback",
+    "hasCoverageSeriesData",
+    "parseTierNumber",
+    "formatTierLabel",
+    "toPercent",
+    "trimTrailingZeros",
+    "formatCompactValue",
+    "formatGameNumber",
+    "formatGamePercent",
+    "formatGameTooltipValue",
+    "COMBAT_TINY_SHARE_MIN",
+    "COMBAT_TINY_SHARE_MAX",
+    "COMBAT_TINY_SHARE_LIMIT",
+    "combatPieCalloutPlugin",
+    "normalizeKey",
+    "getMetricLabelSafe",
+    "COMBAT_DIRECT_DAMAGE_METRICS",
+    "DEFENSE_BLOCKED_METRICS",
+    "UTILITY_METRICS",
+    "ENEMY_TYPE_METRICS",
+    "TIME_RESOURCE_TOTAL_METRICS",
+    "UTILITY_FREE_UP_METRIC_KEYS",
+    "UTILITY_SKIP_METRIC_KEYS",
+    "getRunValueByCandidates",
+    "coverageLegendOverrides",
+    "coverageMetricLabels",
+    "normalizeLegendLabel",
+    "withNormalizedLegendLabels",
+    "coverageColorRules",
+    "damageColorRules",
+    "defenseColorRules",
+    "enemyColorRules",
+    "utilityColorRules",
+    "timeResourceColorRules",
+    "getColorFromRules",
+    "getDamageColor",
+    "buildCombatPieSeries",
+    "withDamageColors",
+    "withDefenseColors",
+    "withEnemyColors",
+    "withUtilityColors",
+    "withTimeResourceColors",
+    "withCoverageColors",
+    "withSeparateYAxes",
+    "getGroupingXAxisLabel",
+    "withGroupingAxisContext",
+    "withCompactNumberFormatting",
+    "cachedCategoryChartRuns",
+    "cachedCategoryChartsByPanel",
+    "getAvailableMetricsForPanel",
+    "applyGenericPanelChartTransforms",
+    "toGenericPanelChartCard",
+    "resolveGenericPanelChartPreview",
+    "buildGenericPanelChartCardsBatch",
+    "buildAllCategoryCharts",
+    "coverageRuns",
+    "coverageDayBuckets",
+    "mainPreview",
+    "coverageMetricKeys",
+    "getCoverageMetricValue",
+    "cachedAvailableNumericMetricKeys",
+    "cachedAvailableCombatMetricKeys",
+    "cachedResolvedCombatDamageMetrics",
+    "cachedResolvedDefenseBlockedMetrics",
+    "cachedResolvedEnemyMetrics",
+    "cachedResolvedUtilityMetrics",
+    "getResolvedCombatDamageMetrics",
+    "getResolvedDefenseBlockedMetrics",
+    "getResolvedEnemyMetrics",
+    "getResolvedUtilityMetrics",
+    "dayBuckets",
+    "buildCombatDayBuckets",
+    "buildDefenseDayBuckets",
+    "tierBuckets",
+    "coverageTierBuckets",
+    "buildDefenseGrowthPreview",
+    "buildDefenseMomentumPreview",
+    "buildDefenseTierMiniCharts",
+    "buildEnemyDayBuckets",
+    "buildEnemyGrowthPreview",
+    "buildEnemyMomentumPreview",
+    "buildEnemyTierMiniCharts",
+    "utilityWaveBuckets",
+    "utilityWaveMetricSeries",
+    "buildUtilityWaveLinePreview",
+    "buildUtilityPieMiniChart",
+    "buildUtilityDistributionMiniCharts",
+    "buildUtilityTierMiniCharts",
+    "buildCombatGrowthPreview",
+    "buildCombatMomentumPreview",
+    "buildCombatAverageDistributionPreview",
+    "buildCombatTierMiniCharts",
+    "buildCoverageTrendPreview",
+    "buildCoverageByTierPreview",
+    "buildCoverageDeltaPreview",
+    "buildCoverageVsOutcomePreview",
+    "coverageMetricLabelList",
+    "coverageChartCatalog",
+    "buildCoverageCharts",
+    "getRunDurationHoursValue",
+    "buildTimeDayBuckets",
+    "timeResourceDaySeries",
+    "timeResourceTierSeries",
+    "timeResourceOutcomeSeries",
+    "buildTimeResourceTrendPreview",
+    "buildTimeResourceDeltaPreview",
+    "buildTimeResourceTierPreview",
+    "buildTimeResourceRollingPreview",
+    "buildTimeResourceOutcomePreview",
+    "hardcodedCategoryChartDepsCache",
+    "resolveHardcodedCategoryChartDeps",
+    "toChartJsType",
+    "buildChartConfig"
+  ],
+  "adaptations": [
+    "immutable input instead of Vue component props",
+    "actual main-thread batch fallback instead of application worker/cache",
+    "English governed-text fallback with variable substitution",
+    "missing native numbers propagate NaN/null instead of synthesized zero; reported zero remains zero"
+  ],
+  "catalog": [
+    {
+      "key": "overview",
+      "title": "Economy Growth Overview",
+      "charts": [
+        {
+          "id": "economy-growth-overview",
+          "title": "Economy Growth Overview"
+        }
+      ]
+    },
+    {
+      "key": "coverage",
+      "title": "Coverage Stats",
+      "charts": [
+        {
+          "id": "coverage-day",
+          "title": "Coverage Trend by Day",
+          "sourceBuilder": "buildCoverageTrendPreview"
+        },
+        {
+          "id": "coverage-tier",
+          "title": "Coverage by Tier",
+          "sourceBuilder": "buildCoverageByTierPreview"
+        },
+        {
+          "id": "coverage-delta",
+          "title": "Coverage Delta by Day",
+          "sourceBuilder": "buildCoverageDeltaPreview"
+        },
+        {
+          "id": "coverage-outcome",
+          "title": "Coverage vs Outcome",
+          "sourceBuilder": "buildCoverageVsOutcomePreview"
+        }
+      ]
+    },
+    {
+      "key": "time",
+      "title": "Time & Progression",
+      "charts": [
+        {
+          "id": "time-core-trend",
+          "title": "Wave + Duration Trend",
+          "infoTitle": "How To Read Wave + Duration Trend",
+          "infoLines": [
+            "Each point shows your average wave reached and average run duration in hours for that day.",
+            "Use this to see whether longer runs are turning into deeper runs over time, or if duration is rising without meaningful wave gains."
+          ],
+          "chartType": "line",
+          "metricCandidates": [
+            [
+              "wave"
+            ],
+            [
+              "duration"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "time-resource-trend",
+          "title": "Resource Totals Trend by Day",
+          "infoTitle": "How To Read Resource Totals Trend by Day",
+          "infoLines": [
+            "Each line shows the average total Coins, Cells, and Dice earned per run for that day.",
+            "Use this to see whether deeper runs are actually producing larger total payouts, not just lasting longer."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [
+            [
+              "coins",
+              "coinsEarned",
+              "coins earned"
+            ],
+            [
+              "cells",
+              "cellCount",
+              "cells collected",
+              "cellsCollected"
+            ],
+            [
+              "rerollShards",
+              "dice",
+              "diceUsed",
+              "reroll shards"
+            ],
+            [
+              "moduleShards",
+              "module shards"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker time resource builder"
+        },
+        {
+          "id": "time-resource-growth",
+          "title": "Resource Delta by Day",
+          "infoTitle": "How To Read Resource Delta by Day",
+          "infoLines": [
+            "Each line shows the day-over-day change in average total Coins, Cells, and Dice earned per run.",
+            "Use this to spot momentum swings where total run value starts accelerating or rolling over."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [
+            [
+              "coins",
+              "coinsEarned",
+              "coins earned"
+            ],
+            [
+              "cells",
+              "cellCount",
+              "cells collected",
+              "cellsCollected"
+            ],
+            [
+              "rerollShards",
+              "dice",
+              "diceUsed",
+              "reroll shards"
+            ],
+            [
+              "moduleShards",
+              "module shards"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker time resource builder"
+        },
+        {
+          "id": "time-resource-tier",
+          "title": "Resource Totals by Tier",
+          "infoTitle": "How To Read Resource Totals by Tier",
+          "infoLines": [
+            "Each line compares average total Coins, Cells, and Dice earned per run across tiers in tier order.",
+            "Use this to see which tiers are actually paying back more total run value, not just taking more time."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [
+            [
+              "coins",
+              "coinsEarned",
+              "coins earned"
+            ],
+            [
+              "cells",
+              "cellCount",
+              "cells collected",
+              "cellsCollected"
+            ],
+            [
+              "rerollShards",
+              "dice",
+              "diceUsed",
+              "reroll shards"
+            ],
+            [
+              "moduleShards",
+              "module shards"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "tier",
+          "sortBy": "value",
+          "sortDirection": "desc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker time resource builder"
+        },
+        {
+          "id": "time-resource-rolling",
+          "title": "Rolling Average Resource Totals",
+          "infoTitle": "How To Read Rolling Average Resource Totals",
+          "infoLines": [
+            "Each line shows a rolling average for total Coins, Cells, and Dice earned per run across recent days.",
+            "Use this to smooth out single-run spikes and judge the underlying trend in your total resource payouts."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [
+            [
+              "coins",
+              "coinsEarned",
+              "coins earned"
+            ],
+            [
+              "cells",
+              "cellCount",
+              "cells collected",
+              "cellsCollected"
+            ],
+            [
+              "rerollShards",
+              "dice",
+              "diceUsed",
+              "reroll shards"
+            ],
+            [
+              "moduleShards",
+              "module shards"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 7,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker time resource builder"
+        },
+        {
+          "id": "time-resource-outcome",
+          "title": "Resource Totals vs Outcome",
+          "infoTitle": "How To Read Resource Totals vs Outcome",
+          "infoLines": [
+            "This compares indexed growth in total Coins, Cells, and Dice against indexed Wave and Duration over time.",
+            "Use this to see whether bigger total payouts are arriving alongside deeper runs and longer duration, or drifting away from your progression results."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [
+            [
+              "coins",
+              "coinsEarned",
+              "coins earned"
+            ],
+            [
+              "cells",
+              "cellCount",
+              "cells collected",
+              "cellsCollected"
+            ],
+            [
+              "rerollShards",
+              "dice",
+              "diceUsed",
+              "reroll shards"
+            ],
+            [
+              "moduleShards",
+              "module shards"
+            ],
+            [
+              "wave"
+            ],
+            [
+              "duration"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker time resource builder"
+        }
+      ]
+    },
+    {
+      "key": "economy",
+      "title": "Economy",
+      "charts": [
+        {
+          "id": "economy-ph-trend",
+          "title": "Per-Hour Trend",
+          "infoTitle": "How To Read Per-Hour Trend",
+          "infoLines": [
+            "Each line shows your average Coins/H, Cells/H, and Dice/H by day.",
+            "Use this to track raw output over time and see when your farming baseline materially changes."
+          ],
+          "chartType": "line",
+          "metricCandidates": [
+            [
+              "coinsPerHour"
+            ],
+            [
+              "cellsPerHour"
+            ],
+            [
+              "rerollShardsPerHour",
+              "dice per hour"
+            ],
+            [
+              "moduleShardsPerHour",
+              "module shards per hour"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "economy-ph-rolling",
+          "title": "Rolling Avg (7 Days) Per-Hour",
+          "infoTitle": "How To Read Rolling Avg (7 Days) Per-Hour",
+          "infoLines": [
+            "Each line shows a 7-day rolling average for your per-hour economy stats.",
+            "Use this to smooth out day-to-day volatility and judge whether your economy is steadily improving or stalling."
+          ],
+          "chartType": "line",
+          "metricCandidates": [
+            [
+              "coinsPerHour"
+            ],
+            [
+              "cellsPerHour"
+            ],
+            [
+              "rerollShardsPerHour",
+              "dice per hour"
+            ],
+            [
+              "moduleShardsPerHour",
+              "module shards per hour"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 7,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "economy-ph-momentum",
+          "title": "Economy Momentum by Day",
+          "infoTitle": "How To Read Economy Momentum by Day",
+          "infoLines": [
+            "Each line shows day-over-day percent change for your per-hour economy stats, so you can see whether growth is accelerating or flattening.",
+            "Use this to spot inflection points after upgrades, strategy changes, or bad farming stretches that are pulling momentum down."
+          ],
+          "chartType": "line",
+          "metricCandidates": [
+            [
+              "coinsPerHour"
+            ],
+            [
+              "cellsPerHour"
+            ],
+            [
+              "rerollShardsPerHour",
+              "dice per hour"
+            ],
+            [
+              "moduleShardsPerHour",
+              "module shards per hour"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "growth": true,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "economy-ph-tier",
+          "title": "Per-Hour by Tier",
+          "infoTitle": "How To Read Per-Hour by Tier",
+          "infoLines": [
+            "Each bar compares your average per-hour economy stats across tiers in tier order.",
+            "Use this to see how your farming efficiency changes as you climb, without the tiers being re-sorted by whichever stat is currently highest."
+          ],
+          "chartType": "bar",
+          "metricCandidates": [
+            [
+              "coinsPerHour"
+            ],
+            [
+              "cellsPerHour"
+            ],
+            [
+              "rerollShardsPerHour",
+              "dice per hour"
+            ],
+            [
+              "moduleShardsPerHour",
+              "module shards per hour"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "tier",
+          "sortBy": "category",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        }
+      ]
+    },
+    {
+      "key": "combat",
+      "title": "Combat",
+      "charts": [
+        {
+          "id": "combat-damage-growth-overview",
+          "title": "Direct Damage Growth Overview",
+          "infoTitle": "How To Read Direct Damage Growth Overview",
+          "infoLines": [
+            "Each line shows indexed growth for a direct damage source, so all of your damage stats can be compared on the same relative scale.",
+            "Use this to see which damage sources are actually scaling over time, even when their raw values are much smaller than your top sources."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "growth": true,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "combat-damage-momentum",
+          "title": "Direct Damage Momentum by Day",
+          "infoTitle": "How To Read Direct Damage Momentum by Day",
+          "infoLines": [
+            "Each line shows day-over-day momentum for a direct damage source, so you can see when a stat starts accelerating, stalling, or falling back.",
+            "Use this to catch inflection points after upgrades or build changes instead of only looking at long-term growth."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "growth": true,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "combat-damage-distribution",
+          "title": "Avg Damage Source Distribution",
+          "infoTitle": "How To Read Avg Damage Source Distribution",
+          "infoLines": [
+            "This shows the average share of each direct damage source across the selected runs.",
+            "Use this to see which sources are carrying your average run, not just spiking in isolated reports."
+          ],
+          "md": 6,
+          "chartHeight": 322,
+          "chartType": "donut",
+          "metricCandidates": [
+            [
+              "projectilesDamage"
+            ],
+            [
+              "rendArmorDamage"
+            ],
+            [
+              "thornDamage"
+            ],
+            [
+              "orbDamage"
+            ],
+            [
+              "landMineDamage"
+            ],
+            [
+              "chainLightningDamage"
+            ],
+            [
+              "smartMissileDamage"
+            ],
+            [
+              "innerLandMineDamage"
+            ],
+            [
+              "swampDamage"
+            ],
+            [
+              "deathWaveDamage"
+            ],
+            [
+              "blackHoleDamage"
+            ],
+            [
+              "flameBotDamage"
+            ],
+            [
+              "attackChipDamage"
+            ],
+            [
+              "electronsDamage"
+            ],
+            [
+              "deathRayDamage"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "run",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "combat-damage-distribution-by-tier",
+          "title": "Damage Distribution by Tier",
+          "infoTitle": "How To Read Damage Distribution by Tier",
+          "infoLines": [
+            "Each mini pie shows the average damage-source mix for one tier.",
+            "Use this to compare how your damage profile shifts from tier to tier without compressing everything into one stacked chart."
+          ],
+          "md": 6,
+          "chartType": "donut",
+          "metricCandidates": [],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "tier",
+          "sortBy": "category",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        }
+      ]
+    },
+    {
+      "key": "defense",
+      "title": "Damage Blocked",
+      "charts": [
+        {
+          "id": "defense-blocked-growth-overview",
+          "title": "Blocked Growth Overview",
+          "infoTitle": "How To Read Blocked Growth Overview",
+          "infoLines": [
+            "Each line shows indexed growth for one blocked-damage source so you can compare how each layer of mitigation has scaled over time.",
+            "Use this to see whether your biggest defensive gains are coming from raw defense, crowd-control blocking, or special mitigation layers."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "growth": true,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "defense-blocked-momentum",
+          "title": "Blocked Momentum by Day",
+          "infoTitle": "How To Read Blocked Momentum by Day",
+          "infoLines": [
+            "Each line shows day-over-day momentum for a blocked-damage source, which highlights when a mitigation layer suddenly starts carrying more of the load.",
+            "Use this to catch defensive inflection points after upgrades, module changes, or strategy shifts instead of only looking at long-term growth."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "growth": true,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "defense-blocked-tier-coverage",
+          "title": "Blocked Coverage by Tier (%)",
+          "infoTitle": "How To Read Blocked Coverage by Tier (%)",
+          "infoLines": [
+            "Each mini pie shows the average share of blocked damage coming from each mitigation source in that tier.",
+            "Use this to see which defensive layers are actually covering incoming damage as you climb, rather than only looking at raw blocked totals."
+          ],
+          "md": 12,
+          "chartType": "pie",
+          "metricCandidates": [],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "tier",
+          "sortBy": "category",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        }
+      ]
+    },
+    {
+      "key": "enemies",
+      "title": "Enemies",
+      "charts": [
+        {
+          "id": "enemies-growth-overview",
+          "title": "Enemy Growth Overview",
+          "infoTitle": "How To Read Enemy Growth Overview",
+          "infoLines": [
+            "Each line shows indexed growth for one enemy type, so all enemy counts can be compared on the same relative scale.",
+            "Use this to see which enemy groups are scaling hardest over time instead of letting the biggest raw categories drown out the rest."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "growth": true,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "enemies-momentum",
+          "title": "Enemy Momentum by Day",
+          "infoTitle": "How To Read Enemy Momentum by Day",
+          "infoLines": [
+            "Each line shows day-over-day momentum for an enemy type so you can spot when one class starts accelerating faster than the rest.",
+            "Use this to catch pressure spikes early, especially for smaller enemy groups that would disappear on a raw-count chart."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "enemies-distribution-by-tier",
+          "title": "Enemy Distribution by Tier",
+          "infoTitle": "How To Read Enemy Distribution by Tier",
+          "infoLines": [
+            "Each mini pie shows the average enemy-type mix for one tier, with tiny slivers called out directly on the chart when needed.",
+            "Use this to compare how enemy pressure composition shifts by tier without compressing everything into one stacked chart."
+          ],
+          "md": 12,
+          "chartType": "donut",
+          "metricCandidates": [],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "tier",
+          "sortBy": "category",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        }
+      ]
+    },
+    {
+      "key": "utility",
+      "title": "Utility",
+      "charts": [
+        {
+          "id": "utility-packages-by-wave",
+          "title": "Recovery Packages Growth vs Wave",
+          "infoTitle": "How To Read Recovery Packages Growth vs Wave",
+          "infoLines": [
+            "This shows indexed package growth across wave buckets so higher-wave runs can be compared on the same relative scale.",
+            "Use this to see whether package gains are compounding as runs go deeper or flattening out at higher waves."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [
+            [
+              "recoveryPackages"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "utility-freeups-by-wave",
+          "title": "Free Ups Trend vs Wave",
+          "infoTitle": "How To Read Free Ups Trend vs Wave",
+          "infoLines": [
+            "This tracks free attack, defense, and utility upgrades across wave buckets instead of plotting every run as a raw point cloud.",
+            "Use this to see which free-up stream is consistently trending up with deeper runs and which one is stalling."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [
+            [
+              "freeAttackUpgrade"
+            ],
+            [
+              "freeDefenseUpgrade"
+            ],
+            [
+              "freeUtilityUpgrade"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "utility-level-skips-by-wave",
+          "title": "Level Skip Momentum vs Wave",
+          "infoTitle": "How To Read Level Skip Momentum vs Wave",
+          "infoLines": [
+            "This shows how quickly skipped enemy attack and health levels are accelerating or slowing across wave buckets.",
+            "Use this to catch where skip value starts falling behind deeper runs instead of only looking at raw skipped totals."
+          ],
+          "md": 6,
+          "chartType": "line",
+          "metricCandidates": [
+            [
+              "enemyAttackLevelsSkipped"
+            ],
+            [
+              "enemyHealthLevelsSkipped"
+            ]
+          ],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "day",
+          "sortBy": "date",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "utility-distribution",
+          "title": "Avg Utility Distribution",
+          "infoTitle": "How To Read Avg Utility Distribution",
+          "infoLines": [
+            "This splits the average utility mix into one pie for Free Ups and one pie for Enemy Skips so those groups can be compared cleanly.",
+            "Recovery Packages are intentionally excluded here so the smaller upgrade and skip splits are readable instead of getting drowned out."
+          ],
+          "md": 6,
+          "chartType": "donut",
+          "metricCandidates": [],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "tier",
+          "sortBy": "category",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        },
+        {
+          "id": "utility-distribution-by-tier",
+          "title": "Utility Distribution by Tier",
+          "infoTitle": "How To Read Utility Distribution by Tier",
+          "infoLines": [
+            "Each tier gets two mini pies: one for Free Ups and one for Enemy Skips.",
+            "Use this to compare how deeper tiers shift within those two utility groups without Recovery Packages dominating the split."
+          ],
+          "md": 12,
+          "chartType": "donut",
+          "metricCandidates": [],
+          "aggregation": "average",
+          "normalization": "none",
+          "grouping": "tier",
+          "sortBy": "category",
+          "sortDirection": "asc",
+          "rollingWindow": 1,
+          "percentileValue": 90,
+          "sourceBuilder": "Tracker generic or hardcoded category builder"
+        }
+      ]
+    }
+  ]
+}
