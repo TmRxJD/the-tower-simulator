@@ -1,6 +1,6 @@
 {
   "schema": "tower-simulator-pages/v1",
-  "createdUtc": "2026-11-11T01:18:59.109Z",
+  "createdUtc": "2026-11-11T03:40:28.606Z",
   "privateSourceIncluded": false,
   "sourceMapsIncluded": false,
   "sourceDriftCount": 0,
@@ -17526,8 +17526,8 @@
     },
     {
       "path": "browser-producer.js",
-      "bytes": 8365870,
-      "sha256": "938cee57831be270d043943fe13d7f0448c6e9c8c09a55061d4370d0da13220b"
+      "bytes": 8366413,
+      "sha256": "7e06f71ee4e9d987c95e45fcbc4b0fb9293c77523b96fa5ba658cbe361077e75"
     },
     {
       "path": "browser-runtime.js",
@@ -17722,12 +17722,12 @@
     {
       "path": "wasm/manifest.json",
       "bytes": 530,
-      "sha256": "329977c1b3a601b116b710efd1e08763d215743f4ef0e751b236e0a162b7fe03"
+      "sha256": "5aa1d91ec70fc33d42bdd9e419d01e453598bba083426c01b7e504a9e4e711cb"
     },
     {
       "path": "wasm/tower-simulator.wasm",
-      "bytes": 6626975,
-      "sha256": "34f853599005a33603b8fda5bfa94fac5bdeebbbffd5fa69b871657301d144fd"
+      "bytes": 6647576,
+      "sha256": "0ee408cdcca5e15af8602fa4f67b147acacfff9dcefa7619d414188bce87c552"
     },
     {
       "path": "within-run-analysis.js",
