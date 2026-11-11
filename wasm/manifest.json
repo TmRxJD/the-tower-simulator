@@ -1,9 +1,9 @@
 {
   "schema": "tower-browser-wasm/v1",
   "abi": 1,
-  "bytes": 6573913,
-  "sha256": "7639518c33007725f2705d74df23242bc54c7354e8cb96edefbe0bc37ffdbb78",
-  "sourceSha256": "7efa9133ce248744d82ce461366c817a05215cc7b9d88cbb8c8a0c2d962993be",
+  "bytes": 6628740,
+  "sha256": "49dd4edc540aac1dfb0ef0e235ce84719fb40e8eb0984550c7d8a5a3375eea1c",
+  "sourceSha256": "0be7b721cf01de8254f8477e24ca6e01d57efb107778fca725ca672f333997f8",
   "maxWork": 100000000000,
   "maxSteps": 100000000,
   "stackBytes": 33554432,

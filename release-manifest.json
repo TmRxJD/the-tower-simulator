@@ -1,10 +1,10 @@
 {
   "schema": "tower-simulator-pages/v1",
-  "createdUtc": "2026-11-10T21:35:48.000Z",
+  "createdUtc": "2026-11-11T00:29:47.344Z",
   "privateSourceIncluded": false,
   "sourceMapsIncluded": false,
   "sourceDriftCount": 0,
-  "engineSource": "current-source",
+  "engineSource": "preserved-release",
   "packagedProducerCatalogFields": 785,
   "simulations": "actual Rust WebAssembly engine in one worker per slot",
   "modelAccess": "user-owned BYOK only; subscription authorization requires desktop",
@@ -17526,13 +17526,13 @@
     },
     {
       "path": "browser-producer.js",
-      "bytes": 8365340,
-      "sha256": "1c3393007b12060cf976446d6c0f764f2823d0521f37cbbb636af23593b4c7d1"
+      "bytes": 8366435,
+      "sha256": "8dcd4da78d0b1db95fb925ea6e36458047ad7591fbc078ea16ecc7c1a6143321"
     },
     {
       "path": "browser-runtime.js",
-      "bytes": 24805,
-      "sha256": "479cad2de140ae20d84f79adb6da284eef843bebbf428ebe26c05aa6dcbd8274"
+      "bytes": 25793,
+      "sha256": "852ad87a81ba379094ca3b6c8710e90418e0cadf5f5719e906764df9bf586466"
     },
     {
       "path": "browser-simulator-worker.js",
@@ -17717,17 +17717,17 @@
     {
       "path": "wasm/engine.js",
       "bytes": 1872,
-      "sha256": "7e4a42bbd0c0dbf22772c13410da022d6722da8b100d9b779d9a6be84ad75674"
+      "sha256": "181bb333c7e4009d3b713a7071b78cba39bf01769291c9e910d06b0a59e489fd"
     },
     {
       "path": "wasm/manifest.json",
       "bytes": 530,
-      "sha256": "f2d16c2d3bf9e4b617263b90be9c10d30b2e3aaf7b0a15e8b28af34963cb8500"
+      "sha256": "66cef7cbfebfdd0bc113f373eaba7e1378cceb5d59aa26798c3990927cd711a7"
     },
     {
       "path": "wasm/tower-simulator.wasm",
-      "bytes": 6573913,
-      "sha256": "7639518c33007725f2705d74df23242bc54c7354e8cb96edefbe0bc37ffdbb78"
+      "bytes": 6628740,
+      "sha256": "49dd4edc540aac1dfb0ef0e235ce84719fb40e8eb0984550c7d8a5a3375eea1c"
     },
     {
       "path": "within-run-analysis.js",
